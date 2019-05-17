@@ -1,13 +1,24 @@
 # royal-london-code-test
 Maturity Valuation calculator for Royal London Candidate Coding Test
+--------------------------------------------------------------------
 
 Processes a list of maturing policies from a CSV file and produces an XML file of maturity values by policy number.
+MaturityValuation runs as a console application. To run it, set MaturityValuation as the StartUp Project and debug.
 
-Run MaturityValuation.exe with two command-line arguments:
+
+Setup
+-----
+
+MaturityValuation takes two command-line arguments:
 	1. The path of the CSV file containing policies to be processed (including the filename and extension)
 	2. The intended path for the generated XML file (including the filename)
+The values of these arguments can be set in the Debug section of the Properties of the MaturityValuation project.
+Alternatively, edit MaturityValuation.csproj.user and add a StartArguments element
+e.g. '<StartArguments>"C:\temp\MaturityData.csv" "C:\temp\ValuedMaturities.xml"</StartArguments>'
 
-i.e. "MaturityValuation.exe <input file path> <output file path>"
+
+Requirements for input file
+---------------------------
 
 The input file should be a CSV file, with one line per policy, and an additional line at the beginning of the file containing the header.
 The values on each line should be separated by commas.
@@ -40,8 +51,11 @@ Each subsequent line should contain the following fields, in order:
 		This must be numeric and may optionally contain one decimal point ('.'). It must not contain any letters or special characters.
 		e.g. "25" for a 25% uplift
 	
-Dependencies:
-	This solution makes use of the following NuGet package:
-		Name:		NUnit 3 (version 3.11.0),
-		Licence:	MIT licence (https://github.com/nunit/nunit/blob/master/LICENSE.txt)
-		Purpose:	Unit tests for the code that calculates policy values.
+	
+Dependencies
+------------
+
+This solution makes use of the following NuGet package:
+	Name:		NUnit 3 (version 3.11.0),
+	Licence:	MIT licence (https://github.com/nunit/nunit/blob/master/LICENSE.txt)
+	Purpose:	Unit tests for the code that calculates policy values.
